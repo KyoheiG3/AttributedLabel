@@ -8,8 +8,8 @@
 
 import UIKit
 
-class AttributedLabel: UIView {
-    enum ContentAlignment: Int {
+public class AttributedLabel: UIView {
+    public enum ContentAlignment: Int {
         case Center
         case Top
         case Bottom
@@ -48,39 +48,39 @@ class AttributedLabel: UIView {
     }
     
     /// default is `0`.
-    var numberOfLines: Int = 0 {
+    public var numberOfLines: Int = 0 {
         didSet { setNeedsDisplay() }
     }
     /// default is `Left`.
-    var contentAlignment: ContentAlignment = .Left {
+    public var contentAlignment: ContentAlignment = .Left {
         didSet { setNeedsDisplay() }
     }
     /// default is system font 17 plain.
-    var font = UIFont.systemFontOfSize(17) {
+    public var font = UIFont.systemFontOfSize(17) {
         didSet { setNeedsDisplay() }
     }
     /// default is `ByTruncatingTail`.
-    var lineBreakMode: NSLineBreakMode = .ByTruncatingTail {
+    public var lineBreakMode: NSLineBreakMode = .ByTruncatingTail {
         didSet { setNeedsDisplay() }
     }
     /// default is nil (text draws black).
-    var textColor: UIColor? {
+    public var textColor: UIColor? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    var paragraphStyle: NSParagraphStyle? {
+    public var paragraphStyle: NSParagraphStyle? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    var shadow: NSShadow? {
+    public var shadow: NSShadow? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    var attributedText: NSAttributedString? {
+    public var attributedText: NSAttributedString? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    var text: String? {
+    public var text: String? {
         get {
             return attributedText?.string
         }
@@ -100,14 +100,14 @@ class AttributedLabel: UIView {
         return nil
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         opaque = false
         contentMode = .Redraw
     }
     
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         guard let attributedText = mergedAttributedText else {
             return
         }
@@ -126,7 +126,7 @@ class AttributedLabel: UIView {
         manager.drawGlyphsForGlyphRange(glyphRange, atPoint: point)
     }
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    public override func sizeThatFits(size: CGSize) -> CGSize {
         guard let attributedText = mergedAttributedText else {
             return super.sizeThatFits(size)
         }
@@ -141,7 +141,7 @@ class AttributedLabel: UIView {
         return CGRectIntegral(frame).size
     }
     
-    override func sizeToFit() {
+    public override func sizeToFit() {
         super.sizeToFit()
         
         frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.max))
