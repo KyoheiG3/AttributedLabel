@@ -20,7 +20,7 @@ public class AttributedLabel: UIView {
         case BottomLeft
         case BottomRight
         
-        func alignOffset(viewSize viewSize: CGSize, containerSize: CGSize) -> CGPoint {
+        func alignOffset(#viewSize: CGSize, containerSize: CGSize) -> CGPoint {
             let xMargin = viewSize.width - containerSize.width
             let yMargin = viewSize.height - containerSize.height
             
@@ -108,37 +108,35 @@ public class AttributedLabel: UIView {
     }
     
     public override func drawRect(rect: CGRect) {
-        guard let attributedText = mergedAttributedText else {
-            return
+        if let attributedText = mergedAttributedText {
+            let container = textContainer(rect.size)
+            let manager = layoutManager(container)
+            
+            let storage = NSTextStorage(attributedString: attributedText)
+            storage.addLayoutManager(manager)
+            
+            let frame = manager.usedRectForTextContainer(container)
+            let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: CGRectIntegral(frame).size)
+            
+            let glyphRange = manager.glyphRangeForTextContainer(container)
+            manager.drawBackgroundForGlyphRange(glyphRange, atPoint: point)
+            manager.drawGlyphsForGlyphRange(glyphRange, atPoint: point)
         }
-        
-        let container = textContainer(rect.size)
-        let manager = layoutManager(container)
-        
-        let storage = NSTextStorage(attributedString: attributedText)
-        storage.addLayoutManager(manager)
-        
-        let frame = manager.usedRectForTextContainer(container)
-        let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: CGRectIntegral(frame).size)
-        
-        let glyphRange = manager.glyphRangeForTextContainer(container)
-        manager.drawBackgroundForGlyphRange(glyphRange, atPoint: point)
-        manager.drawGlyphsForGlyphRange(glyphRange, atPoint: point)
     }
     
     public override func sizeThatFits(size: CGSize) -> CGSize {
-        guard let attributedText = mergedAttributedText else {
-            return super.sizeThatFits(size)
+        if let attributedText = mergedAttributedText {
+            let container = textContainer(size)
+            let manager = layoutManager(container)
+            
+            let storage = NSTextStorage(attributedString: attributedText)
+            storage.addLayoutManager(manager)
+            
+            let frame = manager.usedRectForTextContainer(container)
+            return CGRectIntegral(frame).size
         }
         
-        let container = textContainer(size)
-        let manager = layoutManager(container)
-        
-        let storage = NSTextStorage(attributedString: attributedText)
-        storage.addLayoutManager(manager)
-        
-        let frame = manager.usedRectForTextContainer(container)
-        return CGRectIntegral(frame).size
+        return super.sizeThatFits(size)
     }
     
     public override func sizeToFit() {
