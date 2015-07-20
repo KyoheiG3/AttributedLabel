@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 [![Platform](https://img.shields.io/cocoapods/p/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 
-* Easy to use, fast, and high performance than UILabel.
+* Easy to use, fast, and higher performance than UILabel.
 * I want you to look at the Demo.
 
 ![Customize](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/customize.gif)
