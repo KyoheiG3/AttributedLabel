@@ -119,7 +119,7 @@ override func sizeThatFits(size: CGSize) -> CGSize
 override func sizeToFit()
 ```
 * Same as `sizeToFit` of `UILabel`.
-* Autolayout doesn't work with sizeToFit.
+* Autolayout doesn't work with `sizeToFit`.
 
 ## LICENSE
 
