@@ -5,11 +5,14 @@
 [![License](https://img.shields.io/cocoapods/l/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 [![Platform](https://img.shields.io/cocoapods/p/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 
-* Easy to use, fast, and higher performance than UILabel.
-* I want you to look at the Demo.
+##### Higher performance than `UILabel`.
+
+![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/graph.png)
+![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
+
+##### Customization is easy.
 
 ![Customize](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/customize.gif)
-![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
 
 Left tab is customizable label. The center tab AttributedLabel So fast. Right tab is UILabel So slow. Fast more than 10 times from 5 times.
 
