@@ -7,7 +7,8 @@
 
 ##### Higher performance than `UILabel`.
 
-![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/graph.png)
+![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/performance_graph.png)
+
 ![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
 
 ##### Customization is easy.
