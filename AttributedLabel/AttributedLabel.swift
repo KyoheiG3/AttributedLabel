@@ -20,29 +20,29 @@ public class AttributedLabel: UIView {
         case BottomLeft
         case BottomRight
         
-        func alignOffset(#viewSize: CGSize, containerSize: CGSize) -> CGPoint {
+        func alignOffset(#viewSize: CGSize, containerSize: CGSize, insets: UIEdgeInsets) -> CGPoint {
             let xMargin = viewSize.width - containerSize.width
             let yMargin = viewSize.height - containerSize.height
             
             switch self {
             case Center:
-                return CGPoint(x: max(xMargin / 2, 0), y: max(yMargin / 2, 0))
+                return CGPoint(x: max(xMargin / 2, 0)+insets.left, y: max(yMargin / 2, 0)+insets.top)
             case Top:
-                return CGPoint(x: max(xMargin / 2, 0), y: 0)
+                return CGPoint(x: max(xMargin / 2, 0)+insets.left, y: 0+insets.top)
             case Bottom:
-                return CGPoint(x: max(xMargin / 2, 0), y: max(yMargin, 0))
+                return CGPoint(x: max(xMargin / 2, 0)+insets.left, y: max(yMargin, 0)+insets.top)
             case Left:
-                return CGPoint(x: 0, y: max(yMargin / 2, 0))
+                return CGPoint(x: 0+insets.left, y: max(yMargin / 2, 0)+insets.top)
             case Right:
-                return CGPoint(x: max(xMargin, 0), y: max(yMargin / 2, 0))
+                return CGPoint(x: max(xMargin, 0)+insets.left, y: max(yMargin / 2, 0)+insets.top)
             case TopLeft:
-                return CGPoint(x: 0, y: 0)
+                return CGPoint(x: 0+insets.left, y: 0+insets.top)
             case TopRight:
-                return CGPoint(x: max(xMargin, 0), y: 0)
+                return CGPoint(x: max(xMargin, 0)+insets.left, y: 0+insets.top)
             case BottomLeft:
-                return CGPoint(x: 0, y: max(yMargin, 0))
+                return CGPoint(x: 0+insets.left, y: max(yMargin, 0)+insets.top)
             case BottomRight:
-                return CGPoint(x: max(xMargin, 0), y: max(yMargin, 0))
+                return CGPoint(x: max(xMargin, 0)+insets.left, y: max(yMargin, 0)+insets.top)
             }
         }
     }
@@ -83,6 +83,10 @@ public class AttributedLabel: UIView {
     public var attributedText: NSAttributedString? {
         didSet { setNeedsDisplay() }
     }
+    /// default is `UIEdgeInsetsZero`.
+    public var contentInsets: UIEdgeInsets = UIEdgeInsetsZero {
+        didSet { setNeedsDisplay() }
+    }
     /// default is nil.
     public var text: String? {
         get {
@@ -113,14 +117,17 @@ public class AttributedLabel: UIView {
     
     public override func drawRect(rect: CGRect) {
         if let attributedText = mergedAttributedText {
-            let container = textContainer(rect.size)
+            
+            let insetRect = UIEdgeInsetsInsetRect(rect, contentInsets)
+            
+            let container = textContainer(insetRect.size)
             let manager = layoutManager(container)
             
             let storage = NSTextStorage(attributedString: attributedText)
             storage.addLayoutManager(manager)
             
             let frame = manager.usedRectForTextContainer(container)
-            let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: CGRectIntegral(frame).size)
+            let point = contentAlignment.alignOffset(viewSize: insetRect.size, containerSize: CGRectIntegral(frame).size, insets:contentInsets)
             
             let glyphRange = manager.glyphRangeForTextContainer(container)
             manager.drawBackgroundForGlyphRange(glyphRange, atPoint: point)
