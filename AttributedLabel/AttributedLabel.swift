@@ -55,6 +55,10 @@ public class AttributedLabel: UIView {
     public var contentAlignment: ContentAlignment = .Left {
         didSet { setNeedsDisplay() }
     }
+    /// `lineFragmentPadding` of `NSTextContainer`. default is `0`.
+    public var padding: CGFloat = 0 {
+        didSet { setNeedsDisplay() }
+    }
     /// default is system font 17 plain.
     public var font = UIFont.systemFontOfSize(17) {
         didSet { setNeedsDisplay() }
@@ -148,7 +152,7 @@ public class AttributedLabel: UIView {
     private func textContainer(size: CGSize) -> NSTextContainer {
         let container = NSTextContainer(size: size)
         container.lineBreakMode = lineBreakMode
-        container.lineFragmentPadding = 0
+        container.lineFragmentPadding = padding
         container.maximumNumberOfLines = numberOfLines
         return container
     }
