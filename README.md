@@ -76,6 +76,12 @@ var contentAlignment: AttributedLabel.ContentAlignment
 * Default is `Left`.
 
 ```swift
+var padding: CGFloat
+```
+* `lineFragmentPadding` of `NSTextContainer`.
+* default is `0`.
+
+```swift
 var font: UIFont
 ```
 * Text font.
