@@ -5,9 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 [![Platform](https://img.shields.io/cocoapods/p/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 
+![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/performance_graph.png)
+
 ##### Higher performance than `UILabel`.
 
-![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/performance_graph.png)
+#### [Appetize's Demo](https://appetize.io/app/7q459fyg56828caye3ucdntqp0)
 
 ![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
 
