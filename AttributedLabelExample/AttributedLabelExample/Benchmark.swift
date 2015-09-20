@@ -12,13 +12,13 @@ class Benchmark {
     var startTime: NSDate!
     
     func start() {
-        println("start")
+        print("start")
         startTime = NSDate()
     }
     
     func finish() {
         let elapsed = NSDate().timeIntervalSinceDate(startTime) as Double
         let string = String(format: "%.3f", elapsed)
-        println(string)
+        print(string)
     }
 }
