@@ -104,8 +104,15 @@ public class AttributedLabel: UIView {
         return nil
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        opaque = false
+        contentMode = .Redraw
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         
         opaque = false
         contentMode = .Redraw
