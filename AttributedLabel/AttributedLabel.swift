@@ -111,6 +111,12 @@ public class AttributedLabel: UIView {
         contentMode = .Redraw
     }
     
+    public override func setNeedsDisplay() {
+        if NSThread.isMainThread() {
+            super.setNeedsDisplay()
+        }
+    }
+    
     public override func drawRect(rect: CGRect) {
         guard let attributedText = mergedAttributedText else {
             return
