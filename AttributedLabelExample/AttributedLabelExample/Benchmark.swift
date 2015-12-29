@@ -18,7 +18,7 @@ class Benchmark {
     
     func finish() {
         let elapsed = NSDate().timeIntervalSinceDate(startTime) as Double
-        let string = String(format: "%.3f", elapsed)
+        let string = String(format: "%.8f", elapsed)
         print(string)
     }
 }
