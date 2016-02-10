@@ -31,7 +31,7 @@ Left tab is customizable label. The center tab AttributedLabel So fast. Right ta
 
 ### iOS 8+
 
-#### Cocoapods
+#### CocoaPods
 
 Add the following to your `Podfile`:
 
