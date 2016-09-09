@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 public class AttributedLabel: UIView {
     public enum ContentAlignment: Int {
         case Center
@@ -48,6 +49,7 @@ public class AttributedLabel: UIView {
     }
     
     /// default is `0`.
+    @IBInspectable
     public var numberOfLines: Int = 0 {
         didSet { setNeedsDisplay() }
     }
@@ -56,6 +58,7 @@ public class AttributedLabel: UIView {
         didSet { setNeedsDisplay() }
     }
     /// `lineFragmentPadding` of `NSTextContainer`. default is `0`.
+    @IBInspectable
     public var padding: CGFloat = 0 {
         didSet { setNeedsDisplay() }
     }
@@ -68,6 +71,7 @@ public class AttributedLabel: UIView {
         didSet { setNeedsDisplay() }
     }
     /// default is nil (text draws black).
+    @IBInspectable
     public var textColor: UIColor? {
         didSet { setNeedsDisplay() }
     }
@@ -84,6 +88,7 @@ public class AttributedLabel: UIView {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
+    @IBInspectable
     public var text: String? {
         get {
             return attributedText?.string
