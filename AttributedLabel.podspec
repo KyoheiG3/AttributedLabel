@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AttributedLabel"
-  s.version      = "0.3.1"
+  s.version      = "0.4.0"
   s.summary      = "Easy to use, fast, and higher performance than UILabel."
   s.homepage     = "https://github.com/KyoheiG3/AttributedLabel"
   s.license      = { :type => "MIT", :file => "LICENSE" }

@@ -18,16 +18,16 @@ class CustomizeViewController: UIViewController {
         attributedLabel.text = "AttributedLabel"
     }
     
-    private func rand(random: UInt32) -> CGFloat {
+    private func rand(_ random: UInt32) -> CGFloat {
         return CGFloat(arc4random_uniform(random))
     }
     
-    private func randColor(random: UInt32) -> UIColor {
+    private func randColor(_ random: UInt32) -> UIColor {
         return UIColor(hue: rand(random) / 10, saturation: 0.8, brightness: 0.8, alpha: 1)
     }
     
-    @IBAction func buttonTapped(sender: AnyObject) {
-        if let button = sender as? UIButton, alignment = AttributedLabel.ContentAlignment(rawValue: button.tag) {
+    @IBAction func buttonTapped(_ sender: AnyObject) {
+        if let button = sender as? UIButton, let alignment = AttributedLabel.ContentAlignment(rawValue: button.tag) {
             attributedLabel.contentAlignment = alignment
         }
     }
@@ -37,7 +37,7 @@ class CustomizeViewController: UIViewController {
     }
     
     @IBAction func changeFontSize() {
-        attributedLabel.font = UIFont.systemFontOfSize(rand(20) + 12)
+        attributedLabel.font = UIFont.systemFont(ofSize: rand(20) + 12)
     }
     
     @IBAction func changeShadow() {
