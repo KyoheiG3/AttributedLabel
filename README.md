@@ -27,6 +27,11 @@ Left tab is customizable label. The center tab AttributedLabel So fast. Right ta
 
 ![AttributedLabel](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/attributed_label.png)
 
+## Requirements
+
+- Swift 3.0
+- iOS 7.0 or later
+
 ## How to Install AttributedLabel
 
 ### iOS 8+

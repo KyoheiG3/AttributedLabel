@@ -9,16 +9,16 @@
 import UIKit
 
 class Benchmark {
-    var startTime: NSDate!
+    var startTime: Date!
     
     func start() {
         print("start")
-        startTime = NSDate()
+        startTime = Date()
     }
     
     func finish() {
-        let elapsed = NSDate().timeIntervalSinceDate(startTime) as Double
-        let string = String(format: "%.3f", elapsed)
+        let elapsed = Date().timeIntervalSince(startTime) as Double
+        let string = String(format: "%.8f", elapsed)
         print(string)
     }
 }

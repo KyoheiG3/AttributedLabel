@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ExN-7r-2fH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ExN-7r-2fH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--CollectionViewController-->
@@ -18,8 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PtV-lJ-9Kp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HsY-Wy-7lT">
                                     <size key="itemSize" width="120" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,11 +35,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3my-yz-cUn" customClass="AttributedLabel" customModule="AttributedLabel">
-                                                    <rect key="frame" x="8" y="8" width="104" height="34"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="3my-yz-cUn" firstAttribute="leading" secondItem="fzR-KG-eqo" secondAttribute="leading" constant="8" id="1uK-tF-PBJ"/>
@@ -54,7 +52,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PtV-lJ-9Kp" secondAttribute="trailing" id="DBS-He-3dd"/>
                             <constraint firstItem="PtV-lJ-9Kp" firstAttribute="leading" secondItem="RbV-FE-Qgh" secondAttribute="leading" id="GfJ-b1-oYV"/>
@@ -63,14 +61,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="AttributedLabel" id="ahM-XX-xZV"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="PtV-lJ-9Kp" id="JE0-OH-t65"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njV-wJ-i1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-359.5" y="709.5"/>
+            <point key="canvasLocation" x="-626" y="429"/>
         </scene>
         <!--CollectionViewController-->
         <scene sceneID="hKF-eF-ZIo">
@@ -85,8 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cin-Zy-59I">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nw3-NP-9Cq">
                                     <size key="itemSize" width="120" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -102,14 +98,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGY-Wm-qWP">
-                                                    <rect key="frame" x="8" y="8" width="104" height="34"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="WGY-Wm-qWP" secondAttribute="trailing" constant="8" id="77x-dd-9qw"/>
@@ -125,7 +119,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cin-Zy-59I" firstAttribute="top" secondItem="KRS-24-8Px" secondAttribute="top" id="9Ka-O6-TJ0"/>
                             <constraint firstItem="HQj-Ti-JoY" firstAttribute="top" secondItem="cin-Zy-59I" secondAttribute="bottom" id="bNv-Fz-iZj"/>
@@ -134,25 +128,23 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="UILabel" id="qZ7-dQ-lBz"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="cin-Zy-59I" id="jPW-Wd-Nyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3B9-7d-bcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.5" y="381.5"/>
+            <point key="canvasLocation" x="130" y="429"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wEY-pd-2yd">
             <objects>
                 <tabBarController id="ExN-7r-2fH" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vCb-xs-DhL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="e7x-Hh-Adb" kind="relationship" relationship="viewControllers" id="gBT-Xg-tpb"/>
@@ -162,7 +154,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eG-SB-0Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-359.5" y="-156.5"/>
+            <point key="canvasLocation" x="-625" y="-331"/>
         </scene>
         <!--Customize-->
         <scene sceneID="L0K-MS-Blx">
@@ -177,10 +169,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-fs-mCZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUe-WQ-woo" customClass="AttributedLabel" customModule="AttributedLabel">
-                                        <rect key="frame" x="112" y="100" width="150" height="100"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="0Io-hh-rON"/>
@@ -191,70 +181,61 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6H-ZN-tJI">
-                                        <rect key="frame" x="172" y="62" width="30" height="30"/>
                                         <state key="normal" title="Top"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="n2c-xx-4l7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kI-G2-9Bs">
-                                        <rect key="frame" x="162" y="208" width="51" height="30"/>
                                         <state key="normal" title="Bottom"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="PiA-KX-zPK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAO-P8-5NW">
-                                        <rect key="frame" x="74" y="135" width="30" height="30"/>
                                         <state key="normal" title="Left"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="cxq-WN-4hN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZA-bI-rC6">
-                                        <rect key="frame" x="270" y="135" width="36" height="30"/>
                                         <state key="normal" title="Right"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="puL-pU-9C4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERu-bn-P8b">
-                                        <rect key="frame" x="51" y="62" width="53" height="30"/>
                                         <state key="normal" title="TopLeft"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="U1u-fz-HMN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdm-J9-ena">
-                                        <rect key="frame" x="270" y="62" width="62" height="30"/>
                                         <state key="normal" title="TopRight"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="bpr-G1-ILB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocu-pd-dzv">
-                                        <rect key="frame" x="27" y="208" width="77" height="30"/>
                                         <state key="normal" title="BottomLeft"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="C5S-Ff-AeJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqZ-MT-dim">
-                                        <rect key="frame" x="270" y="208" width="86" height="30"/>
                                         <state key="normal" title="BottomRight"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="DZj-eN-rKy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmu-1M-Kwh">
-                                        <rect key="frame" x="164" y="262" width="47" height="30"/>
                                         <state key="normal" title="Center"/>
                                         <connections>
                                             <action selector="buttonTapped:" destination="e7x-Hh-Adb" eventType="touchUpInside" id="2dA-ZR-uFi"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="FUe-WQ-woo" firstAttribute="centerY" secondItem="wcR-fs-mCZ" secondAttribute="centerY" id="1YU-cs-O9T"/>
                                     <constraint firstItem="FUe-WQ-woo" firstAttribute="top" secondItem="Z6H-ZN-tJI" secondAttribute="bottom" constant="8" id="31m-fq-cHj"/>
@@ -280,28 +261,25 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czc-e7-VRe">
-                                <rect key="frame" x="124" y="360" width="127" height="30"/>
                                 <state key="normal" title="Change Text Color"/>
                                 <connections>
                                     <action selector="changeTextColor" destination="e7x-Hh-Adb" eventType="touchUpInside" id="Hxw-ya-iOM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bao-mc-wmM">
-                                <rect key="frame" x="127" y="398" width="121" height="30"/>
                                 <state key="normal" title="Change Font Size"/>
                                 <connections>
                                     <action selector="changeFontSize" destination="e7x-Hh-Adb" eventType="touchUpInside" id="5Hg-rR-6tX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nl-Ye-ZFb">
-                                <rect key="frame" x="130.5" y="436" width="113" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nl-Ye-ZFb">
                                 <state key="normal" title="Change Shadow"/>
                                 <connections>
                                     <action selector="changeShadow" destination="e7x-Hh-Adb" eventType="touchUpInside" id="6G7-se-Dct"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wcR-fs-mCZ" firstAttribute="top" secondItem="Lkn-ab-KZn" secondAttribute="bottom" id="1ke-fA-r2J"/>
                             <constraint firstItem="bao-mc-wmM" firstAttribute="centerX" secondItem="PRq-WR-RP1" secondAttribute="centerX" id="Ow0-J6-Yfg"/>
@@ -315,7 +293,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Customize" id="4zL-5b-txu"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="attributedLabel" destination="FUe-WQ-woo" id="5TG-DZ-oad"/>
                     </connections>

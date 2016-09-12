@@ -9,40 +9,40 @@
 import UIKit
 
 @IBDesignable
-public class AttributedLabel: UIView {
+open class AttributedLabel: UIView {
     public enum ContentAlignment: Int {
-        case Center
-        case Top
-        case Bottom
-        case Left
-        case Right
-        case TopLeft
-        case TopRight
-        case BottomLeft
-        case BottomRight
+        case center
+        case top
+        case bottom
+        case left
+        case right
+        case topLeft
+        case topRight
+        case bottomLeft
+        case bottomRight
         
-        func alignOffset(viewSize viewSize: CGSize, containerSize: CGSize) -> CGPoint {
+        func alignOffset(viewSize: CGSize, containerSize: CGSize) -> CGPoint {
             let xMargin = viewSize.width - containerSize.width
             let yMargin = viewSize.height - containerSize.height
             
             switch self {
-            case Center:
+            case .center:
                 return CGPoint(x: max(xMargin / 2, 0), y: max(yMargin / 2, 0))
-            case Top:
+            case .top:
                 return CGPoint(x: max(xMargin / 2, 0), y: 0)
-            case Bottom:
+            case .bottom:
                 return CGPoint(x: max(xMargin / 2, 0), y: max(yMargin, 0))
-            case Left:
+            case .left:
                 return CGPoint(x: 0, y: max(yMargin / 2, 0))
-            case Right:
+            case .right:
                 return CGPoint(x: max(xMargin, 0), y: max(yMargin / 2, 0))
-            case TopLeft:
+            case .topLeft:
                 return CGPoint(x: 0, y: 0)
-            case TopRight:
+            case .topRight:
                 return CGPoint(x: max(xMargin, 0), y: 0)
-            case BottomLeft:
+            case .bottomLeft:
                 return CGPoint(x: 0, y: max(yMargin, 0))
-            case BottomRight:
+            case .bottomRight:
                 return CGPoint(x: max(xMargin, 0), y: max(yMargin, 0))
             }
         }
@@ -50,46 +50,58 @@ public class AttributedLabel: UIView {
     
     /// default is `0`.
     @IBInspectable
-    public var numberOfLines: Int = 0 {
-        didSet { setNeedsDisplay() }
+    open var numberOfLines: Int {
+        get { return container.maximumNumberOfLines }
+        set {
+            container.maximumNumberOfLines = newValue
+            setNeedsDisplay()
+        }
     }
     /// default is `Left`.
-    public var contentAlignment: ContentAlignment = .Left {
+    open var contentAlignment: ContentAlignment = .left {
         didSet { setNeedsDisplay() }
     }
     /// `lineFragmentPadding` of `NSTextContainer`. default is `0`.
     @IBInspectable
-    public var padding: CGFloat = 0 {
-        didSet { setNeedsDisplay() }
+    open var padding: CGFloat {
+        get { return container.lineFragmentPadding }
+        set {
+            container.lineFragmentPadding = newValue
+            setNeedsDisplay()
+        }
     }
     /// default is system font 17 plain.
-    public var font = UIFont.systemFontOfSize(17) {
+    open var font = UIFont.systemFont(ofSize: 17) {
         didSet { setNeedsDisplay() }
     }
     /// default is `ByTruncatingTail`.
-    public var lineBreakMode: NSLineBreakMode = .ByTruncatingTail {
-        didSet { setNeedsDisplay() }
+    open var lineBreakMode: NSLineBreakMode {
+        get { return container.lineBreakMode }
+        set {
+            container.lineBreakMode = newValue
+            setNeedsDisplay()
+        }
     }
     /// default is nil (text draws black).
     @IBInspectable
-    public var textColor: UIColor? {
+    open var textColor: UIColor? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    public var paragraphStyle: NSParagraphStyle? {
+    open var paragraphStyle: NSParagraphStyle? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    public var shadow: NSShadow? {
+    open var shadow: NSShadow? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
-    public var attributedText: NSAttributedString? {
+    open var attributedText: NSAttributedString? {
         didSet { setNeedsDisplay() }
     }
     /// default is nil.
     @IBInspectable
-    public var text: String? {
+    open var text: String? {
         get {
             return attributedText?.string
         }
@@ -102,88 +114,79 @@ public class AttributedLabel: UIView {
         }
     }
     
-    private var mergedAttributedText: NSAttributedString? {
+    var mergedAttributedText: NSAttributedString? {
         if let attributedText = attributedText {
             return mergeAttributes(attributedText)
         }
         return nil
     }
     
+    let container = NSTextContainer()
+    let layoutManager = NSLayoutManager()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        opaque = false
-        contentMode = .Redraw
+        isOpaque = false
+        contentMode = .redraw
+        lineBreakMode = .byTruncatingTail
+        padding = 0
+        layoutManager.addTextContainer(container)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        opaque = false
-        contentMode = .Redraw
+        isOpaque = false
+        contentMode = .redraw
+        lineBreakMode = .byTruncatingTail
+        padding = 0
+        layoutManager.addTextContainer(container)
     }
     
-    public override func setNeedsDisplay() {
-        if NSThread.isMainThread() {
+    open override func setNeedsDisplay() {
+        if Thread.isMainThread {
             super.setNeedsDisplay()
         }
     }
     
-    public override func drawRect(rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         guard let attributedText = mergedAttributedText else {
             return
         }
-
-        let container = textContainer(rect.size)
-        let manager = layoutManager(container)
         
         let storage = NSTextStorage(attributedString: attributedText)
-        storage.addLayoutManager(manager)
+        storage.addLayoutManager(layoutManager)
         
-        let frame = manager.usedRectForTextContainer(container)
-        let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: CGRectIntegral(frame).size)
+        container.size = rect.size
+        let frame = layoutManager.usedRect(for: container)
+        let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: frame.integral.size)
         
-        let glyphRange = manager.glyphRangeForTextContainer(container)
-        manager.drawBackgroundForGlyphRange(glyphRange, atPoint: point)
-        manager.drawGlyphsForGlyphRange(glyphRange, atPoint: point)
+        let glyphRange = layoutManager.glyphRange(for: container)
+        layoutManager.drawBackground(forGlyphRange: glyphRange, at: point)
+        layoutManager.drawGlyphs(forGlyphRange: glyphRange, at: point)
     }
     
-    public override func sizeThatFits(size: CGSize) -> CGSize {
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let attributedText = mergedAttributedText else {
             return super.sizeThatFits(size)
         }
         
-        let container = textContainer(size)
-        let manager = layoutManager(container)
-        
         let storage = NSTextStorage(attributedString: attributedText)
-        storage.addLayoutManager(manager)
+        storage.addLayoutManager(layoutManager)
         
-        let frame = manager.usedRectForTextContainer(container)
-        return CGRectIntegral(frame).size
+        container.size = size
+        let frame = layoutManager.usedRect(for: container)
+        return frame.integral.size
     }
     
-    public override func sizeToFit() {
+    open override func sizeToFit() {
         super.sizeToFit()
         
-        frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.max))
+        frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
     }
     
-    private func textContainer(size: CGSize) -> NSTextContainer {
-        let container = NSTextContainer(size: size)
-        container.lineBreakMode = lineBreakMode
-        container.lineFragmentPadding = padding
-        container.maximumNumberOfLines = numberOfLines
-        return container
-    }
-    
-    private func layoutManager(container: NSTextContainer) -> NSLayoutManager {
-        let layoutManager = NSLayoutManager()
-        layoutManager.addTextContainer(container)
-        return layoutManager
-    }
-    
-    private func mergeAttributes(attributedText: NSAttributedString) -> NSAttributedString {
+    private func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
         let attrString = NSMutableAttributedString(attributedString: attributedText)
         
         addAttribute(attrString, attrName: NSFontAttributeName, attr: font)
@@ -203,9 +206,9 @@ public class AttributedLabel: UIView {
         return attrString
     }
     
-    private func addAttribute(attrString: NSMutableAttributedString, attrName: String, attr: AnyObject) {
+    private func addAttribute(_ attrString: NSMutableAttributedString, attrName: String, attr: AnyObject) {
         let range = NSRange(location: 0, length: attrString.length)
-        attrString.enumerateAttribute(attrName, inRange: range, options: .Reverse) { object, range, pointer in
+        attrString.enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
             if object == nil {
                 attrString.addAttributes([attrName: attr], range: range)
             }
