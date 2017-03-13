@@ -114,6 +114,9 @@ open class AttributedLabel: UIView {
         }
     }
     
+    /// If need to use intrinsicContentSize set true. Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
+    public var intrinsicAutoLayout = false
+    
     var mergedAttributedText: NSAttributedString? {
         if let attributedText = attributedText {
             return mergeAttributes(attributedText)
@@ -150,6 +153,14 @@ open class AttributedLabel: UIView {
         }
     }
     
+    open override var intrinsicContentSize: CGSize {
+        if intrinsicAutoLayout {
+            return sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+        } else {
+            return bounds.size
+        }
+    }
+    
     open override func draw(_ rect: CGRect) {
         guard let attributedText = mergedAttributedText else {
             return
@@ -169,7 +180,7 @@ open class AttributedLabel: UIView {
     
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let attributedText = mergedAttributedText else {
-            return super.sizeThatFits(size)
+            return .zero
         }
         
         let storage = NSTextStorage(attributedString: attributedText)
