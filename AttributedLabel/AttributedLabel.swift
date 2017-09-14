@@ -178,6 +178,12 @@ open class AttributedLabel: UIView {
         layoutManager.drawGlyphs(forGlyphRange: glyphRange, at: point)
     }
     
+    open override var intrinsicContentSize: CGSize {
+        get {
+            return sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
+        }
+    }
+    
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let attributedText = mergedAttributedText else {
             return .zero
