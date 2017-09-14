@@ -43,9 +43,7 @@ Add the following to your `Podfile`:
 
 ```Ruby
 pod "AttributedLabel"
-use_frameworks!
 ```
-Note: the `use_frameworks!` is required for pods made in Swift.
 
 #### Carthage
 
@@ -61,83 +59,90 @@ Just add everything in the `AttributedLabel.swift` file to your project.
 
 ## Usage
 
-### import
-
-If target is ios8.0 or later, please import the `AttributedLabel`.
-
-```Swift
-import AttributedLabel
-```
-
 ### Variable
 
 ```swift
 var numberOfLines: Int
 ```
-* Same as `numberOfLines` of `UILabel`.
-* Default is `0`.
+- Same as `numberOfLines` of `UILabel`.
+- Default is `0`.
 
 ```swift
 var contentAlignment: AttributedLabel.ContentAlignment
 ```
-* Alignment of content.
-* Default is `Left`.
+- Alignment of content.
+- Default is `left`.
 
 ```swift
-var padding: CGFloat
+@IBInspectable var padding: CGFloat
 ```
-* `lineFragmentPadding` of `NSTextContainer`.
-* default is `0`.
+- `lineFragmentPadding` of `NSTextContainer`.
+- default is `0`.
 
 ```swift
 var font: UIFont
 ```
-* Text font.
-* Default is system font 17 plain.
+- Text font.
+- Default is system font 17 plain.
 
 ```swift
 var lineBreakMode: NSLineBreakMode
 ```
-* Same as `lineBreakMode` of `UILabel`.
-* Default is `ByTruncatingTail`.
+- Same as `lineBreakMode` of `UILabel`.
+- Default is `ByTruncatingTail`.
 
 ```swift
-var textColor: UIColor?
+@IBInspectable var textColor: UIColor?
 ```
-* Default is nil (text draws black).
+- Default is nil (text draws black).
 
 ```swift
 var paragraphStyle: NSParagraphStyle?
 ```
-* Default is nil.
+- Default is nil.
 
 ```swift
 var shadow: NSShadow?
 ```
-* Default is nil.
+- Default is nil.
 
 ```swift
 var attributedText: NSAttributedString?
 ```
-* Default is nil.
+- Default is nil.
 
 ```swift
-var text: String?
+@IBInspectable var text: String?
 ```
-* Default is nil.
+- Default is nil.
+
+```swift
+var intrinsicAutoLayout: Bool
+```
+- If need to use intrinsicContentSize set true.
+- Should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
+- Default is `false`.
 
 ### Function
 
 ```swift
 override func sizeThatFits(size: CGSize) -> CGSize
 ```
-* Same as `sizeThatFits` of `UILabel`.
+- Same as `sizeThatFits` of `UILabel`.
 
 ```swift
 override func sizeToFit()
 ```
-* Same as `sizeToFit` of `UILabel`.
-* Autolayout doesn't work with `sizeToFit`.
+- Same as `sizeToFit` of `UILabel`.
+
+## Author
+
+#### Kyohei Ito
+
+- [GitHub](https://github.com/kyoheig3)
+- [Twitter](https://twitter.com/kyoheig3)
+
+Follow me 🎉
 
 ## LICENSE
 
