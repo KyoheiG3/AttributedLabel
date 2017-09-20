@@ -155,7 +155,13 @@ open class AttributedLabel: UIView {
     
     open override var intrinsicContentSize: CGSize {
         if intrinsicAutoLayout {
-            return sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+            guard let attributedText = mergedAttributedText else {
+                return .zero
+            }
+            let size = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
+            let boundingRect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+
+            return boundingRect.integral.size
         } else {
             return bounds.size
         }
