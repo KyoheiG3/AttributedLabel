@@ -206,24 +206,24 @@ open class AttributedLabel: UIView {
     private func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
         let attrString = NSMutableAttributedString(attributedString: attributedText)
         
-        addAttribute(attrString, attrName: NSFontAttributeName, attr: font)
-        
+
+        addAttribute(attrString, attrName: .font, attr: font)
         if let textColor = textColor {
-            addAttribute(attrString, attrName: NSForegroundColorAttributeName, attr: textColor)
+            addAttribute(attrString, attrName: .foregroundColor, attr: textColor)
         }
         
         if let paragraphStyle = paragraphStyle {
-            addAttribute(attrString, attrName: NSParagraphStyleAttributeName, attr: paragraphStyle)
+            addAttribute(attrString, attrName: .paragraphStyle, attr: paragraphStyle)
         }
         
         if let shadow = shadow {
-            addAttribute(attrString, attrName: NSShadowAttributeName, attr: shadow)
+            addAttribute(attrString, attrName: .shadow, attr: shadow)
         }
         
         return attrString
     }
-    
-    private func addAttribute(_ attrString: NSMutableAttributedString, attrName: String, attr: AnyObject) {
+
+    private func addAttribute(_ attrString: NSMutableAttributedString, attrName: NSAttributedStringKey, attr: AnyObject) {
         let range = NSRange(location: 0, length: attrString.length)
         attrString.enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
             if object == nil {
