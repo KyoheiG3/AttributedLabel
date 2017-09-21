@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C75201FF1F73458A005E1197 /* AttributedLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75201FE1F73458A005E1197 /* AttributedLabelTests.swift */; };
+		C75202011F73458A005E1197 /* AttributedLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F60DC51B582DCC006761A8 /* AttributedLabel.framework */; };
 		C7F60DC91B582DCC006761A8 /* AttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F60DC81B582DCC006761A8 /* AttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7F60DD11B582E1D006761A8 /* AttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F60DD01B582E1D006761A8 /* AttributedLabel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C75202021F73458A005E1197 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7F60DBC1B582DCC006761A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7F60DC41B582DCC006761A8;
+			remoteInfo = AttributedLabel;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C75201FC1F73458A005E1197 /* AttributedLabelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttributedLabelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C75201FE1F73458A005E1197 /* AttributedLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedLabelTests.swift; sourceTree = "<group>"; };
+		C75202001F73458A005E1197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7F60DC51B582DCC006761A8 /* AttributedLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttributedLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F60DC81B582DCC006761A8 /* AttributedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
 		C7F60DCA1B582DCC006761A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +34,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C75201F91F73458A005E1197 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C75202011F73458A005E1197 /* AttributedLabel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7F60DC11B582DCC006761A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C75201FD1F73458A005E1197 /* AttributedLabelTests */ = {
+			isa = PBXGroup;
+			children = (
+				C75201FE1F73458A005E1197 /* AttributedLabelTests.swift */,
+				C75202001F73458A005E1197 /* Info.plist */,
+			);
+			path = AttributedLabelTests;
+			sourceTree = "<group>";
+		};
 		C7F60DBB1B582DCC006761A8 = {
 			isa = PBXGroup;
 			children = (
 				C7F60DC71B582DCC006761A8 /* AttributedLabel */,
+				C75201FD1F73458A005E1197 /* AttributedLabelTests */,
 				C7F60DC61B582DCC006761A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				C7F60DC51B582DCC006761A8 /* AttributedLabel.framework */,
+				C75201FC1F73458A005E1197 /* AttributedLabelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +103,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C75201FB1F73458A005E1197 /* AttributedLabelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C75202061F73458A005E1197 /* Build configuration list for PBXNativeTarget "AttributedLabelTests" */;
+			buildPhases = (
+				C75201F81F73458A005E1197 /* Sources */,
+				C75201F91F73458A005E1197 /* Frameworks */,
+				C75201FA1F73458A005E1197 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C75202031F73458A005E1197 /* PBXTargetDependency */,
+			);
+			name = AttributedLabelTests;
+			productName = AttributedLabelTests;
+			productReference = C75201FC1F73458A005E1197 /* AttributedLabelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7F60DC41B582DCC006761A8 /* AttributedLabel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7F60DCD1B582DCC006761A8 /* Build configuration list for PBXNativeTarget "AttributedLabel" */;
@@ -93,10 +145,14 @@
 		C7F60DBC1B582DCC006761A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Kyohei Ito";
 				TargetAttributes = {
+					C75201FB1F73458A005E1197 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					C7F60DC41B582DCC006761A8 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 0900;
@@ -116,11 +172,19 @@
 			projectRoot = "";
 			targets = (
 				C7F60DC41B582DCC006761A8 /* AttributedLabel */,
+				C75201FB1F73458A005E1197 /* AttributedLabelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C75201FA1F73458A005E1197 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7F60DC31B582DCC006761A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,6 +195,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C75201F81F73458A005E1197 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C75201FF1F73458A005E1197 /* AttributedLabelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7F60DC01B582DCC006761A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,7 +213,60 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C75202031F73458A005E1197 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7F60DC41B582DCC006761A8 /* AttributedLabel */;
+			targetProxy = C75202021F73458A005E1197 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C75202041F73458A005E1197 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = AttributedLabelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyoheiito.AttributedLabelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C75202051F73458A005E1197 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = AttributedLabelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyoheiito.AttributedLabelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C7F60DCB1B582DCC006761A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -292,6 +417,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C75202061F73458A005E1197 /* Build configuration list for PBXNativeTarget "AttributedLabelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C75202041F73458A005E1197 /* Debug */,
+				C75202051F73458A005E1197 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7F60DBF1B582DCC006761A8 /* Build configuration list for PBXProject "AttributedLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
