@@ -114,8 +114,9 @@ open class AttributedLabel: UIView {
         }
     }
 
-    /// If need to use intrinsicContentSize set true. Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
-    public var intrinsicAutoLayout = false
+    /// If need to use intrinsicContentSize set true.
+    /// Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
+    public var usesIntrinsicContentSize = false
 
     var mergedAttributedText: NSAttributedString? {
         if let attributedText = attributedText {
@@ -154,7 +155,7 @@ open class AttributedLabel: UIView {
     }
 
     open override var intrinsicContentSize: CGSize {
-        if intrinsicAutoLayout {
+        if usesIntrinsicContentSize {
             guard let attributedText = mergedAttributedText else {
                 return .zero
             }
@@ -203,33 +204,39 @@ open class AttributedLabel: UIView {
         frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
     }
 
-    private func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
+    func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
         let attrString = NSMutableAttributedString(attributedString: attributedText)
 
-        addAttribute(attrString, attrName: .font, attr: font)
+        attrString.addAttribute(.font, attr: font)
 
         if let textColor = textColor {
-            addAttribute(attrString, attrName: .foregroundColor, attr: textColor)
+            attrString.addAttribute(.foregroundColor, attr: textColor)
         }
 
         if let paragraphStyle = paragraphStyle {
-            addAttribute(attrString, attrName: .paragraphStyle, attr: paragraphStyle)
+            attrString.addAttribute(.paragraphStyle, attr: paragraphStyle)
         }
 
         if let shadow = shadow {
-            addAttribute(attrString, attrName: .shadow, attr: shadow)
+            attrString.addAttribute(.shadow, attr: shadow)
         }
 
         return attrString
     }
 
-    private func addAttribute(_ attrString: NSMutableAttributedString, attrName: NSAttributedStringKey, attr: AnyObject) {
-        let range = NSRange(location: 0, length: attrString.length)
-        attrString.enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
+}
+
+extension NSMutableAttributedString {
+    @discardableResult
+    func addAttribute(_ attrName: NSAttributedStringKey, attr: AnyObject, in range: NSRange? = nil) -> Self {
+        let range = range ?? NSRange(location: 0, length: length)
+        enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
             if object == nil {
-                attrString.addAttributes([attrName: attr], range: range)
+                addAttributes([attrName: attr], range: range)
             }
         }
+
+        return self
     }
 }
 
