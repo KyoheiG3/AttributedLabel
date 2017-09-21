@@ -19,6 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C752020C1F738D5A005E1197 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7AF9F4F1B5842AF00FA96B9 /* AttributedLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C75201FC1F73458A005E1197;
+			remoteInfo = AttributedLabelTests;
+		};
 		C7AF9F531B5842AF00FA96B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7AF9F4F1B5842AF00FA96B9 /* AttributedLabel.xcodeproj */;
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				C7AF9F541B5842AF00FA96B9 /* AttributedLabel.framework */,
+				C752020D1F738D5A005E1197 /* AttributedLabelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +184,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C752020D1F738D5A005E1197 /* AttributedLabelTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AttributedLabelTests.xctest;
+			remoteRef = C752020C1F738D5A005E1197 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C7AF9F541B5842AF00FA96B9 /* AttributedLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -339,7 +354,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyoheiito.AttributedLabelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -353,7 +367,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyoheiito.AttributedLabelExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
