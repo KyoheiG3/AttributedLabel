@@ -1,0 +1,11 @@
+language: objective-c
+os: osx
+osx_image: xcode9
+before_install:
+  - gem install xcpretty
+before_script:
+  - set -o pipefail
+script:
+  - xcodebuild test -project ./AttributedLabel.xcodeproj -scheme AttributedLabelTests -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,id=ABBD7191-486B-462F-80B4-AE08C5820DA1' | xcpretty -c
+notifications:
+  email: false

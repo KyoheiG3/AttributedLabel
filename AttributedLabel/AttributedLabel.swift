@@ -20,11 +20,11 @@ open class AttributedLabel: UIView {
         case topRight
         case bottomLeft
         case bottomRight
-        
+
         func alignOffset(viewSize: CGSize, containerSize: CGSize) -> CGPoint {
             let xMargin = viewSize.width - containerSize.width
             let yMargin = viewSize.height - containerSize.height
-            
+
             switch self {
             case .center:
                 return CGPoint(x: max(xMargin / 2, 0), y: max(yMargin / 2, 0))
@@ -47,7 +47,7 @@ open class AttributedLabel: UIView {
             }
         }
     }
-    
+
     /// default is `0`.
     @IBInspectable
     open var numberOfLines: Int {
@@ -113,116 +113,130 @@ open class AttributedLabel: UIView {
             }
         }
     }
-    
-    /// If need to use intrinsicContentSize set true. Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
-    public var intrinsicAutoLayout = false
-    
+
+    /// If need to use intrinsicContentSize set true.
+    /// Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
+    public var usesIntrinsicContentSize = false
+
     var mergedAttributedText: NSAttributedString? {
         if let attributedText = attributedText {
             return mergeAttributes(attributedText)
         }
         return nil
     }
-    
+
     let container = NSTextContainer()
     let layoutManager = NSLayoutManager()
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         isOpaque = false
         contentMode = .redraw
         lineBreakMode = .byTruncatingTail
         padding = 0
         layoutManager.addTextContainer(container)
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         isOpaque = false
         contentMode = .redraw
         lineBreakMode = .byTruncatingTail
         padding = 0
         layoutManager.addTextContainer(container)
     }
-    
+
     open override func setNeedsDisplay() {
         if Thread.isMainThread {
             super.setNeedsDisplay()
         }
     }
-    
+
     open override var intrinsicContentSize: CGSize {
-        if intrinsicAutoLayout {
-            return sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+        if usesIntrinsicContentSize {
+            guard let attributedText = mergedAttributedText else {
+                return .zero
+            }
+            let size = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
+            let boundingRect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+
+            return boundingRect.integral.size
         } else {
             return bounds.size
         }
     }
-    
+
     open override func draw(_ rect: CGRect) {
         guard let attributedText = mergedAttributedText else {
             return
         }
-        
+
         let storage = NSTextStorage(attributedString: attributedText)
         storage.addLayoutManager(layoutManager)
-        
+
         container.size = rect.size
         let frame = layoutManager.usedRect(for: container)
         let point = contentAlignment.alignOffset(viewSize: rect.size, containerSize: frame.integral.size)
-        
+
         let glyphRange = layoutManager.glyphRange(for: container)
         layoutManager.drawBackground(forGlyphRange: glyphRange, at: point)
         layoutManager.drawGlyphs(forGlyphRange: glyphRange, at: point)
     }
-    
+
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let attributedText = mergedAttributedText else {
             return .zero
         }
-        
+
         let storage = NSTextStorage(attributedString: attributedText)
         storage.addLayoutManager(layoutManager)
-        
+
         container.size = size
         let frame = layoutManager.usedRect(for: container)
         return frame.integral.size
     }
-    
+
     open override func sizeToFit() {
         super.sizeToFit()
-        
+
         frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
     }
-    
-    private func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
+
+    func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
         let attrString = NSMutableAttributedString(attributedString: attributedText)
-        
-        addAttribute(attrString, attrName: NSFontAttributeName, attr: font)
-        
+
+        attrString.addAttribute(.font, attr: font)
+
         if let textColor = textColor {
-            addAttribute(attrString, attrName: NSForegroundColorAttributeName, attr: textColor)
+            attrString.addAttribute(.foregroundColor, attr: textColor)
         }
-        
+
         if let paragraphStyle = paragraphStyle {
-            addAttribute(attrString, attrName: NSParagraphStyleAttributeName, attr: paragraphStyle)
+            attrString.addAttribute(.paragraphStyle, attr: paragraphStyle)
         }
-        
+
         if let shadow = shadow {
-            addAttribute(attrString, attrName: NSShadowAttributeName, attr: shadow)
+            attrString.addAttribute(.shadow, attr: shadow)
         }
-        
+
         return attrString
     }
-    
-    private func addAttribute(_ attrString: NSMutableAttributedString, attrName: String, attr: AnyObject) {
-        let range = NSRange(location: 0, length: attrString.length)
-        attrString.enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
+
+}
+
+extension NSMutableAttributedString {
+    @discardableResult
+    func addAttribute(_ attrName: NSAttributedStringKey, attr: AnyObject, in range: NSRange? = nil) -> Self {
+        let range = range ?? NSRange(location: 0, length: length)
+        enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
             if object == nil {
-                attrString.addAttributes([attrName: attr], range: range)
+                addAttributes([attrName: attr], range: range)
             }
         }
+
+        return self
     }
 }
+

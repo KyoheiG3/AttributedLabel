@@ -75,7 +75,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         let rangeOfMinutes = (string as NSString).range(of: number)
         let attributedString = NSMutableAttributedString(string: string as String)
         
-        attributedString.setAttributes([NSForegroundColorAttributeName: UIColor.black], range: rangeOfMinutes)
+        attributedString.setAttributes([.foregroundColor: UIColor.black], range: rangeOfMinutes)
         return attributedString
     }
     

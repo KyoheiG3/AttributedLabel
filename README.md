@@ -1,5 +1,6 @@
 # AttributedLabel
 
+[![Build Status](https://travis-ci.org/KyoheiG3/AttributedLabel.svg?branch=master)](https://travis-ci.org/KyoheiG3/AttributedLabel)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 [![License](https://img.shields.io/cocoapods/l/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
@@ -12,6 +13,20 @@
 #### [Appetize's Demo](https://appetize.io/app/7q459fyg56828caye3ucdntqp0)
 
 ![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
+
+## Overview
+
+This is a better performance than `UILabel` and can be used like a standard UI component.
+Also, Easier to use than `UILabel`.
+
+Since `UIView` is inherited instead of `UILabel`, there is little wasteful processing.
+It uses the function of TextKit to draw characters.
+
+However, please note that content layout is not done automatically.
+If want to automatically fix the height of the content, set `usesIntrinsicContentSize` to `true`.
+
+Even if set it to true, the width of the content depends on the content frame.
+Even if specify an ambiguous width in Interface Builder, the width does not automatically fit.
 
 ##### Customization is easy.
 
@@ -117,9 +132,10 @@ var attributedText: NSAttributedString?
 - Default is nil.
 
 ```swift
-var intrinsicAutoLayout: Bool
+var usesIntrinsicContentSize: Bool
 ```
 - If need to use intrinsicContentSize set true.
+- Must specify width of Label yourself because this change only height automatically.
 - Should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
 - Default is `false`.
 
@@ -133,7 +149,8 @@ override func sizeThatFits(size: CGSize) -> CGSize
 ```swift
 override func sizeToFit()
 ```
-- Same as `sizeToFit` of `UILabel`.
+- Fit like `UILabel`.
+- The width of the content depends on the content frame.
 
 ## Author
 
