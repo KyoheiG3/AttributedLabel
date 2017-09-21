@@ -44,7 +44,7 @@ Left tab is customizable label. The center tab AttributedLabel So fast. Right ta
 
 ## Requirements
 
-- Swift 3.0
+- Swift 4.0
 - iOS 7.0 or later
 - tvOS 9.0 or later
 
