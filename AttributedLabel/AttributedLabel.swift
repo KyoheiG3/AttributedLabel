@@ -113,6 +113,9 @@ open class AttributedLabel: UIView {
             }
         }
     }
+    /// Support for constraint-based layout (auto layout)
+    /// If nonzero, this is used when determining -intrinsicContentSize for multiline labels
+    open var preferredMaxLayoutWidth: CGFloat = 0
 
     /// If need to use intrinsicContentSize set true.
     /// Also should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
@@ -156,13 +159,9 @@ open class AttributedLabel: UIView {
 
     open override var intrinsicContentSize: CGSize {
         if usesIntrinsicContentSize {
-            guard let attributedText = mergedAttributedText else {
-                return .zero
-            }
-            let size = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-            let boundingRect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
-
-            return boundingRect.integral.size
+            let width = preferredMaxLayoutWidth == 0 ? CGFloat.greatestFiniteMagnitude : preferredMaxLayoutWidth
+            let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+            return sizeThatFits(size)
         } else {
             return bounds.size
         }
@@ -190,18 +189,25 @@ open class AttributedLabel: UIView {
             return .zero
         }
 
-        let storage = NSTextStorage(attributedString: attributedText)
-        storage.addLayoutManager(layoutManager)
+        if numberOfLines == 0 {
+            let boundingRect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+            return boundingRect.integral.size
+        } else {
+            let storage = NSTextStorage(attributedString: attributedText)
+            storage.addLayoutManager(layoutManager)
 
-        container.size = size
-        let frame = layoutManager.usedRect(for: container)
-        return frame.integral.size
+            container.size = size
+            let frame = layoutManager.usedRect(for: container)
+            return frame.integral.size
+        }
     }
 
     open override func sizeToFit() {
         super.sizeToFit()
 
-        frame.size = sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
+        let width = preferredMaxLayoutWidth == 0 ? CGFloat.greatestFiniteMagnitude : preferredMaxLayoutWidth
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        frame.size = sizeThatFits(size)
     }
 
     func mergeAttributes(_ attributedText: NSAttributedString) -> NSAttributedString {
