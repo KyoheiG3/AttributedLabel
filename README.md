@@ -6,13 +6,13 @@
 [![License](https://img.shields.io/cocoapods/l/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 [![Platform](https://img.shields.io/cocoapods/p/AttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/AttributedLabel)
 
-![Graph](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/performance_graph.png)
+![Graph](https://user-images.githubusercontent.com/5707132/33195812-1a93b3ac-d11e-11e7-89de-f5b5d21ac4a8.png)
 
 ##### Higher performance than `UILabel`.
 
 #### [Appetize's Demo](https://appetize.io/app/7q459fyg56828caye3ucdntqp0)
 
-![Label](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/label.gif)
+![Label](https://user-images.githubusercontent.com/5707132/33195811-182c5128-d11e-11e7-8945-0c4244429e19.gif)
 
 ## Overview
 
@@ -25,23 +25,20 @@ It uses the function of TextKit to draw characters.
 However, please note that content layout is not done automatically.
 If want to automatically fix the height of the content, set `usesIntrinsicContentSize` to `true`.
 
-Even if set it to true, the width of the content depends on the content frame.
-Even if specify an ambiguous width in Interface Builder, the width does not automatically fit.
-
 ##### Customization is easy.
 
-![Customize](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/customize.gif)
+![Customize](https://user-images.githubusercontent.com/5707132/33195810-159c27bc-d11e-11e7-9a8b-45c9c20567fd.gif)
 
 Left tab is customizable label. The center tab AttributedLabel So fast. Right tab is UILabel So slow. Fast more than 10 times from 5 times.
 
 - use the UIlabel
 
-![UILabel](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/ui_label.png)
+![UILabel](https://user-images.githubusercontent.com/5707132/33195814-1d55f622-d11e-11e7-8e8a-71ac9bc72375.png)
 
 - use the AttributedLabel
 
-![AttributedLabel](https://github.com/KyoheiG3/assets/blob/master/AttributedLabel/attributed_label.png)
-
+![AttributedLabel](https://user-images.githubusercontent.com/5707132/33195809-138ddda8-d11e-11e7-80fe-1ee33441d4b8.png)
+!
 ## Requirements
 
 - Swift 4.0
@@ -135,9 +132,14 @@ var attributedText: NSAttributedString?
 var usesIntrinsicContentSize: Bool
 ```
 - If need to use intrinsicContentSize set true.
-- Must specify width of Label yourself because this change only height automatically.
 - Should call invalidateIntrinsicContentSize when intrinsicContentSize is cached. When text was changed for example.
 - Default is `false`.
+
+```swift
+var preferredMaxLayoutWidth: CGFloat
+```
+- Support for constraint-based layout (auto layout)
+- If nonzero, this is used when determining intrinsicContentSize for multiline labels
 
 ### Function
 
@@ -150,7 +152,6 @@ override func sizeThatFits(size: CGSize) -> CGSize
 override func sizeToFit()
 ```
 - Fit like `UILabel`.
-- The width of the content depends on the content frame.
 
 ## Author
 
