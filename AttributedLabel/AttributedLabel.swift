@@ -189,17 +189,12 @@ open class AttributedLabel: UIView {
             return .zero
         }
 
-        if numberOfLines == 0 {
-            let boundingRect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
-            return boundingRect.integral.size
-        } else {
-            let storage = NSTextStorage(attributedString: attributedText)
-            storage.addLayoutManager(layoutManager)
+        let storage = NSTextStorage(attributedString: attributedText)
+        storage.addLayoutManager(layoutManager)
 
-            container.size = size
-            let frame = layoutManager.usedRect(for: container)
-            return frame.integral.size
-        }
+        container.size = size
+        let frame = layoutManager.usedRect(for: container)
+        return frame.integral.size
     }
 
     open override func sizeToFit() {
