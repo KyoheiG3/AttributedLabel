@@ -159,7 +159,7 @@ open class AttributedLabel: UIView {
 
     open override var intrinsicContentSize: CGSize {
         if usesIntrinsicContentSize {
-            let width = preferredMaxLayoutWidth == 0 ? CGFloat.greatestFiniteMagnitude : preferredMaxLayoutWidth
+            let width = preferredMaxLayoutWidth == 0 ? bounds.width : preferredMaxLayoutWidth
             let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
             return sizeThatFits(size)
         } else {

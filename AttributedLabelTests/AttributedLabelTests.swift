@@ -49,7 +49,7 @@ class AttributedLabelTests: XCTestCase {
 
     func testContentSize() {
         let attributedLabel = AttributedLabel(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
-        let tallestSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+        let tallestSize = CGSize(width: attributedLabel.bounds.width, height: CGFloat.greatestFiniteMagnitude)
 
         attributedLabel.usesIntrinsicContentSize = true
         XCTAssertEqual(attributedLabel.intrinsicContentSize, .zero)
