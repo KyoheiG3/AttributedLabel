@@ -19,6 +19,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0FD22BB9214DC33C00345BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7AF9F4F1B5842AF00FA96B9 /* AttributedLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDC739C41F7B582300206679;
+			remoteInfo = "AttributedLabel-tvOS";
+		};
+		0FD22BBB214DC33C00345BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7AF9F4F1B5842AF00FA96B9 /* AttributedLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDC739CC1F7B582300206679;
+			remoteInfo = "AttributedLabel-tvOSTests";
+		};
 		C752020C1F738D5A005E1197 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7AF9F4F1B5842AF00FA96B9 /* AttributedLabel.xcodeproj */;
@@ -118,6 +132,8 @@
 			children = (
 				C7AF9F541B5842AF00FA96B9 /* AttributedLabel.framework */,
 				C752020D1F738D5A005E1197 /* AttributedLabelTests.xctest */,
+				0FD22BBA214DC33C00345BB6 /* AttributedLabel.framework */,
+				0FD22BBC214DC33C00345BB6 /* AttributedLabel-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,7 +166,7 @@
 		C7AF9F261B58426D00FA96B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Kyohei Ito";
 				TargetAttributes = {
 					C7AF9F2D1B58426D00FA96B9 = {
@@ -184,6 +200,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0FD22BBA214DC33C00345BB6 /* AttributedLabel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AttributedLabel.framework;
+			remoteRef = 0FD22BB9214DC33C00345BB6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0FD22BBC214DC33C00345BB6 /* AttributedLabel-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AttributedLabel-tvOSTests.xctest";
+			remoteRef = 0FD22BBB214DC33C00345BB6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C752020D1F738D5A005E1197 /* AttributedLabelTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -259,12 +289,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -311,12 +343,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
