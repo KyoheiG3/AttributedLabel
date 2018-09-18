@@ -145,7 +145,7 @@ extension NSParagraphStyle {
 
 extension NSMutableAttributedString {
     @discardableResult
-    func addAttribute(_ attrName: NSAttributedStringKey, attr: AnyObject) -> Self {
+    func addAttribute(_ attrName: NSAttributedString.Key, attr: AnyObject) -> Self {
         let location = self.length.random()
         let length = (self.length - location).random()
         let range = NSRange(location: location, length: length)

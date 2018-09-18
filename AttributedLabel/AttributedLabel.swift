@@ -229,7 +229,7 @@ open class AttributedLabel: UIView {
 
 extension NSMutableAttributedString {
     @discardableResult
-    func addAttribute(_ attrName: NSAttributedStringKey, attr: AnyObject, in range: NSRange? = nil) -> Self {
+    func addAttribute(_ attrName: NSAttributedString.Key, attr: AnyObject, in range: NSRange? = nil) -> Self {
         let range = range ?? NSRange(location: 0, length: length)
         enumerateAttribute(attrName, in: range, options: .reverse) { object, range, pointer in
             if object == nil {
