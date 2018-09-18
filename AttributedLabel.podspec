@@ -1,10 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "AttributedLabel"
-  s.version      = "1.1.2"
+  s.version      = "2.0.0"
   s.summary      = "Easy to use, fast, and higher performance than UILabel."
   s.homepage     = "https://github.com/KyoheiG3/AttributedLabel"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Kyohei Ito" => "je.suis.kyohei@gmail.com" }
+  s.swift_version = '4.2'
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
   s.source       = { :git => "https://github.com/KyoheiG3/AttributedLabel.git", :tag => s.version.to_s }
